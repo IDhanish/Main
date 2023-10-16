@@ -22,7 +22,7 @@ jobs:
       - name: Copy UAT to Main
         run: |
           # Copy the contents of Repository UAT into Repository Main
-          cp -r repository-a/* .
+          cp -r UAT/* .
 
           # Commit the changes
           git add .
