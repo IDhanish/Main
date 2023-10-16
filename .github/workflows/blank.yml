@@ -15,7 +15,7 @@ jobs:
 
       - name: Clone Repository UAT
         run: |
-          git clone https://github.com/IDhanish/UAT.git UAT
+          git clone https://github.com/IDhanish/UAT.git UAT/
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
