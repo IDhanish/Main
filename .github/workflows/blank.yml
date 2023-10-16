@@ -1,37 +1,23 @@
-name: Repository Integration
+name: UAT Integration
 
 on:
   push:
     branches:
-      - main  # You can change this to the branch you want to track in Repository B
+      - main  # Replace with the branch name you want to trigger the action
 
 jobs:
-  integrate_repository:
+  integrate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Clone Repository UAT
-        run: |
-          git clone https://github.com/IDhanish/UAT.git UAT
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Clone UAT Repository
+        run: git clone https://github.com/IDhanish/UAT.git uat
 
-      - name: Copy UAT to Main
+      - name: Copy UAT Contents
         run: |
-          # Copy the contents of Repository UAT into Repository Main
-          cp -r UAT .
+          cp -r uat/* ./  # Copy UAT contents to the current directory
 
-          # Commit the changes
-          git add .
-          git commit -m "Integrate Repository UAT"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push changes to Repository Main
-        run: |
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # You can add further steps here to manage the copied UAT contents.
