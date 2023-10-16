@@ -13,11 +13,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Clone UAT Repository
-        run: git clone https://github.com/IDhanish/UAT.git uat
-
-      - name: Copy UAT Contents
-        run: |
-          cp -r uat/* ./  # Copy UAT contents to the current directory
-
-      # You can add further steps here to manage the copied UAT contents.
+      - name: Check out my other private repo
+        uses: actions/checkout@master
+        with:
+          repository: IDhanish/UAT
